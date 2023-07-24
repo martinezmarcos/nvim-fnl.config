@@ -13,6 +13,42 @@
                                                       {:name source}))
                        :window {:completion (cmp.config.window.bordered)
                                 :documentation (cmp.config.window.bordered)}
+                       :formatting {:fields [:kind :abbr :menu]
+                                    :format (fn [entry vim-item]
+                                              (set vim-item.kind
+                                                   (string.format "%s"
+                                                                  (. {:Text ""
+                                                                      :Method :m
+                                                                      :Function ""
+                                                                      :Constructor ""
+                                                                      :Field ""
+                                                                      :Variable ""
+                                                                      :Class ""
+                                                                      :Interface ""
+                                                                      :Module ""
+                                                                      :Property ""
+                                                                      :Unit ""
+                                                                      :Value ""
+                                                                      :Enum ""
+                                                                      :Keyword ""
+                                                                      :Snippet ""
+                                                                      :Color ""
+                                                                      :File ""
+                                                                      :Reference ""
+                                                                      :Folder ""
+                                                                      :EnumMember ""
+                                                                      :Constant ""
+                                                                      :Struct ""
+                                                                      :Event ""
+                                                                      :Operator ""
+                                                                      :TypeParameter ""}
+                                                                     vim-item.kind)))
+                                              (set vim-item.menu
+                                                   (. {:nvim_lua "[NLUA]"
+                                                       :buffer "[BUFR]"
+                                                       :path "[PATH]"}
+                                                      entry.source.name))
+                                              vim-item)}
                        :mapping (cmp.mapping.preset.insert {:<C-j> (cmp.mapping (cmp.mapping.select_next_item)
                                                                                 [:i
                                                                                  :c])
@@ -36,8 +72,8 @@
                                                                                  :s])
                                                             :<S-Tab> (cmp.mapping (fn [fallback]
                                                                                     (if (cmp.visible)
-                                                                                       (cmp.select_prev_item))
-                                                                                      (fallback))
+                                                                                        (cmp.select_prev_item))
+                                                                                    (fallback))
                                                                                   [:i
                                                                                    :s])})})
            ;; cmp `/` cmdline config
