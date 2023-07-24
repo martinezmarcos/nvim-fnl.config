@@ -1,24 +1,22 @@
--- [nfnl] Compiled from  by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] Compiled from fnl/cfg/lsp/handlers.fnl by https://github.com/Olical/nfnl, do not edit.
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local notify = autoload("nfnl.notify")
 local lspconfig = autoload("lspconfig")
 local cmp_nvim_lsp = autoload("cmp_nvim_lsp")
+local which_key = autoload("which-key")
 local function create_handler(server_name, server_opts)
   local opts = {}
   local function _2_(_client, bufnr)
-    local keymap = vim.keymap.set
-    local bufopts
-    local function _3_(desc)
-      return {desc = desc, noremap = true, silent = true, buffer = bufnr}
+    local _4_
+    do
+      local _3_ = {border = "rounded"}
+      local function _5_(...)
+        return vim.diagnostic.open_float(_3_, ...)
+      end
+      _4_ = _5_
     end
-    bufopts = _3_
-    keymap("n", "gD", vim.lsp.buf.declaration, bufopts("Go to declaration"))
-    keymap("n", "gd", vim.lsp.buf.definition, bufopts("Go to definition"))
-    keymap("n", "gi", vim.lsp.buf.implementation, bufopts("Go to implementation"))
-    keymap("n", "gr", vim.lsp.buf.references, bufopts("Open references"))
-    keymap("n", "K", vim.lsp.buf.hover, bufopts("Hover"))
-    return keymap("n", "<C-k>", vim.lsp.buf.signature_help, bufopts("Signature help"))
+    return which_key.register({l = {name = "lsp/diagnostics", D = {vim.lsp.buf.declaration, "Go to declaration"}, d = {vim.lsp.buf.definition, "Go to definition"}, i = {vim.lsp.buf.implementation, "Go to implementation"}, r = {vim.lsp.buf.references, "Open symbol references"}, h = {vim.lsp.buf.hover, "Open hover"}, s = {vim.lsp.buf.signature_help, "Open signature help"}, l = {_4_, "Open diagnostic information"}}}, {prefix = "<Leader>", buffer = bufnr})
   end
   opts.on_attach = _2_
   opts.capabilities = cmp_nvim_lsp.default_capabilities()
