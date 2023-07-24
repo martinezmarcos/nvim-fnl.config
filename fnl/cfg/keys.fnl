@@ -42,6 +42,11 @@
                           :t [telescope-builtin.treesitter
                               "Find Tree-sitter symbols"]}}
                      {:prefix :<Leader>})
+           ;; [VISUAL]
+           (register {:g {:name :change-later
+                          :s [":sort" "Sort selected lines"]}
+                      }
+                     {:prefix :<Leader> :mode :v})
            ;; Stay in VISUAL mode after adjusting indentation
            (keymap :v "<" :<gv opts)
            (keymap :v ">" :>gv opts)

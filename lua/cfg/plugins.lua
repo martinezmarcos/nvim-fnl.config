@@ -1,4 +1,4 @@
--- [nfnl] Compiled from  by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] Compiled from fnl/cfg/plugins.fnl by https://github.com/Olical/nfnl, do not edit.
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local notify = autoload("nfnl.notify")
@@ -16,6 +16,7 @@ do
       use("nvim-lualine/lualine.nvim", "requires")
       use("folke/tokyonight.nvim")
       use("ellisonleao/gruvbox.nvim")
+      use("Mofiqul/dracula.nvim")
       use("nvim-tree/nvim-tree.lua")
       use("nvim-tree/nvim-web-devicons")
       use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})

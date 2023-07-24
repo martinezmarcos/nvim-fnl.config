@@ -13,6 +13,7 @@
                            (use :nvim-lualine/lualine.nvim :requires)
                            (use :folke/tokyonight.nvim)
                            (use :ellisonleao/gruvbox.nvim)
+                           (use :Mofiqul/dracula.nvim)
                            (use :nvim-tree/nvim-tree.lua)
                            (use :nvim-tree/nvim-web-devicons)
                            (use {1 :nvim-treesitter/nvim-treesitter

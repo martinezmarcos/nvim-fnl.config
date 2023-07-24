@@ -20,6 +20,7 @@ do
     vim.o.timeout = true
     vim.o.timeoutlen = 300
     register({w = {name = "window", s = {"<C-w>s", "Split window horizontally"}, v = {"<C-w>v", "Split window vertically"}, c = {"<C-w>c", "Close current window"}, h = {"<C-w>h", "Move cursor, window left"}, j = {"<C-w>j", "Move cursor, window below"}, k = {"<C-w>k", "Move cursor, window above"}, l = {"<C-w>l", "Move cursor, window right"}}, b = {name = "buffer", l = {"<Cmd>bnext<CR>", "Next buffer"}, h = {"<Cmd>bprevious<CR>", "Previous buffer"}}, u = {name = "undo/redo", u = {"<Cmd>undo<CR>", "Undo"}, r = {"<Cmd>redo<CR>", "Redo"}}, t = {name = "toggle", f = {nvim_tree_api.tree.toggle, "Toggle file tree"}}, f = {name = "find", f = {telescope_builtin.find_files, "Find files"}, g = {telescope_builtin.live_grep, "Live grep"}, b = {telescope_builtin.buffers, "Find buffers"}, h = {telescope_builtin.help_tags, "Find in help tags"}, t = {telescope_builtin.treesitter, "Find Tree-sitter symbols"}}}, {prefix = "<Leader>"})
+    register({g = {name = "change-later", s = {":sort", "Sort selected lines"}}}, {prefix = "<Leader>", mode = "v"})
     keymap("v", "<", "<gv", opts)
     keymap("v", ">", ">gv", opts)
     setup({})
