@@ -19,11 +19,21 @@
                ;; Include default mappings
                (nvim-tree-api.config.mappings.default_on_attach bufnr)
                ;; Custom mappings
-               (vim.keymap.set :n :? nvim-tree-api.tree.toggle_help (opts :Help))
+               (vim.keymap.set :n "?" nvim-tree-api.tree.toggle_help
+                               (opts :Help))
                (vim.keymap.set :n :l nvim-tree-api.node.open.edit (opts :Open))
                (vim.keymap.set :n :h nvim-tree-api.node.navigate.parent_close
                                (opts "Close directory"))))
 
-           (setup {:on_attach on-attach}))))
+           (setup {:on_attach on-attach
+                   :diagnostics {:enable true}
+                   :renderer {:highlight_git true
+                              :root_folder_modifier ":t"
+                              :icons {:glyphs {:default ""
+                                               :symlink ""
+                                               :git {:unstaged ""
+                                                     :staged :S
+                                                     :untracked :U}}}}
+                   :actions {:open_file {:quit_on_open true}}}))))
 
 {}
